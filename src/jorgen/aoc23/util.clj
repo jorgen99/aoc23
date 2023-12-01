@@ -8,10 +8,6 @@
     str/split-lines))
 
 
-(defn count-if [pred coll]
-  (count (filter pred coll)))
-
-
 (defn char->int [^Character c]
   (Character/digit c 10))
 
@@ -29,3 +25,8 @@
 
 (defn first-digit [col]
   (find-first digit? col))
+
+
+(defn first-and-last [col]
+  ((juxt first last) col))
+

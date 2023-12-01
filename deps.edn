@@ -17,15 +17,16 @@
          {;org.clojure/test.check {:mvn/version "1.1.1"}
           ;io.github.cognitect-labs/test-runner
           ;{:git/tag "v0.5.0" :git/sha "48c3c67"}
-          lambdaisland/kaocha {:mvn/version "0.0-573"}
+          lambdaisland/kaocha {:mvn/version "1.87.1366"}
           lambdaisland/kaocha-junit-xml {:mvn/version "0.0-70"}
           instaparse/instaparse      {:mvn/version "1.4.12"}}
           ;incom.github.igrishaev/zippo {:mvn/version "0.1.0"}}
 
          :main-opts  ["-m" "kaocha.runner"
-                      "--plugin" "capture-output"
-                      "--plugin" "junit-xml"
-                      "--junit-xml-file" "target/kaocha/unit-test-result.xml"]}
+                      ;"--plugin" "capture-output"
+                      ;"--plugin" "junit-xml"
+                                        ;"--junit-xml-file" "target/kaocha/unit-test-result.xml"
+                      ]}
 
   :watcher {:main-opts  ["-m" "kaocha.runner"
                          "--capture-output"
