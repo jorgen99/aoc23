@@ -64,3 +64,23 @@
        parse-games
        good-games
        (reduce +)))
+
+
+(defn max-cubes-in-game [game]
+  (reduce (fn [max-cubes grab]
+            (reduce-kv (fn [acc color cubes]
+                         (update acc color #(max % cubes)))
+                       max-cubes
+                       grab))
+          {:blue 0 :red 0 :green 0}
+          game))
+
+
+(defn part2 [lines]
+  (->> lines
+       parse-games
+       (map second)
+       (map max-cubes-in-game)
+       (map vals)
+       (map #(reduce * %))
+       (reduce +)))
