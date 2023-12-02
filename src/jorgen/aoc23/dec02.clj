@@ -8,7 +8,11 @@
   {:red 12 :green 13 :blue 14})
 
 
-(defn parse-grab [grab]
+(defn parse-grab
+  "Parse one 'bag grab'-color into a map of color to count
+  Ex.
+       '3 blue' => {:blue 3}"
+  [grab]
   (let [parsed-grab (re-seq #"(\d+) (\w+)" grab)]
     (reduce (fn [acc [_ no color]]
               (assoc acc (keyword color) (util/parse-int no)))
@@ -16,12 +20,20 @@
             parsed-grab)))
 
 
-(defn parse-line [line]
+(defn parse-game
+  "Parse one line (game) into a tuple of game-no and a list of 'bag-grabs'
+  Ex.
+          'Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green'
+     =>   [1 [{:blue 3, :red 4} {:red 1, :green 2, :blue 6} {:green 2}]]
+  "
+  [line]
+  (prn line)
   (let [[game cubes] (str/split line #":")
         game-no (->> (re-matches #"Game (\d+)" game)
                      second
                      util/parse-int)
         grabs (str/split (str/trim cubes) #"; ")
+        _ (prn grabs)
         parsed-grabs (reduce (fn [acc grab]
                                (conj acc (parse-grab grab)))
                              []
@@ -33,7 +45,17 @@
   (<= cubes (get no-of-cubes color)))
 
 
-(defn good-game? [game]
+(defn good-game?
+  "Check all bag-grabs to see if any color has more cubes than
+   available
+   Ex.
+          [{:blue 3, :red 4} {:red 1, :green 2, :blue 6} {:green 2}]
+      =>  true
+
+          [{:green 8, :blue 6, :red 20} {:blue 5, :red 4, :green 13} {:green 5, :red 1}]
+      =>  false
+  "
+  [game]
   (->> game
        (mapcat (fn [m]
                  (map ok-no-of-cubes? m)))
@@ -54,7 +76,7 @@
 
 (defn parse-games [lines]
   (reduce (fn [acc line]
-            (conj acc (parse-line line)))
+            (conj acc (parse-game line)))
           []
           lines))
 
