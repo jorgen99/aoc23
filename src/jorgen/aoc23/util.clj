@@ -30,3 +30,7 @@
 (defn first-and-last [col]
   ((juxt first last) col))
 
+
+(defn parse-int [s]
+  (Integer/parseInt s))
+
