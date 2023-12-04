@@ -13,9 +13,18 @@
       (is (= [3 3] (take-step :e current-pos)))
       (is (= [1 3] (take-step :w current-pos))))))
 
+
 (deftest testing-possible-parts
   (testing "It should sum the id of the engine parts"
     (let [sample (util/file->lines "dec03_sample.txt")
           input (util/file->lines "dec03_input.txt")]
       (is (= 4361 (part1 sample)))
       (is (= 512794 (part1 input))))))
+
+
+(deftest testing-possible-parts
+  (testing "It should sum the gear ratios"
+    (let [sample (util/file->lines "dec03_sample.txt")
+          input (util/file->lines "dec03_input.txt")]
+      (is (= 467835 (part2 sample)))
+      (is (= 67779080 (part2 input))))))
