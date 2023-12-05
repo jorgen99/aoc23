@@ -77,18 +77,30 @@
            (rest categories))))
 
 
-(defn part1 [lines]
-  (let [seeds (map parse-long (re-seq #"\d+" (first lines)))
-        categories (->> map-headings
+(defn location-for-seeds [seeds lines]
+  (let [categories (->> map-headings
                         (map #(parse-category % lines)))]
     (->> seeds
          (map #(location % categories))
          (apply min))))
 
 
-  (comment
-    (part1 (util/file->lines "dec05_sample.txt"))
-    (part1 (util/file->lines "dec05_input.txt"))
-    ;(part2 (util/file->lines "dec05_sample.txt"))
-    ;(part2 (util/file->lines "dec05_input.txt")))
-    )
+(defn part1 [lines]
+  (let [seeds (map parse-long (re-seq #"\d+" (first lines)))]
+    (location-for-seeds seeds lines)))
+
+
+
+(defn part2 [lines]
+  (let [seeds (->> (map parse-long (re-seq #"\d+" (first lines)))
+                   (partition 2)
+                   (mapcat (fn [[start lenth]] (range start (+ start lenth)))))]
+    (location-for-seeds seeds lines)))
+
+
+(comment
+  (part1 (util/file->lines "dec05_sample.txt"))
+  (part1 (util/file->lines "dec05_input.txt"))
+  (part2 (util/file->lines "dec05_sample.txt"))
+  (part2 (util/file->lines "dec05_input.txt")))
+
