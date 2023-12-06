@@ -1,6 +1,7 @@
 (ns jorgen.aoc23.dec06
   (:require
     [clojure.string :as str]
+    [clojure.math :as math]
     [jorgen.aoc23.util :as util]))
 
 
@@ -37,7 +38,7 @@
        parse-long))
 
 
-(defn part2 [lines]
+(defn part2-brute-force [lines]
   (let [time' (parse-number (first lines))
         record (parse-number (second lines))
         race [[time' record]]]
@@ -46,9 +47,18 @@
          first)))
 
 
+(defn part2-quadratic-formula [lines]
+  (let [time' (parse-number (first lines))
+        record (parse-number (second lines))
+        hold1 (/ (+ time' (math/sqrt(- (* time' time') (* 4 record)))) 2)
+        hold2 (/ (- time' (math/sqrt(- (* time' time') (* 4 record)))) 2)]
+    (math/round (- hold1 hold2))))
+
+
 (comment
   (time (part1 (util/file->lines "dec06_sample.txt")))
   (time (part1 (util/file->lines "dec06_input.txt")))
-  (time (part2 (util/file->lines "dec06_sample.txt")))
-  (time (part2 (util/file->lines "dec06_input.txt"))))
+  (time (part2-brute-force (util/file->lines "dec06_sample.txt")))
+  (time (part2-brute-force (util/file->lines "dec06_input.txt")))
+  (time (part2-quadratic-formula (util/file->lines "dec06_input.txt"))))
 

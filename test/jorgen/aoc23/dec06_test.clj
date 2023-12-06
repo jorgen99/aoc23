@@ -15,5 +15,6 @@
   (testing "It should calculate the number of ways to beat the record"
     (let [sample (util/file->lines "dec06_sample.txt")
           input (util/file->lines "dec06_input.txt")]
-      (is (= (part2 sample) 71503))
-      (is (= (part2 input) 24655068)))))
+      (is (= (part2-brute-force sample) 71503))
+      (is (= (part2-brute-force input) 24655068))
+      (is (= (part2-quadratic-formula input) 24655068)))))
