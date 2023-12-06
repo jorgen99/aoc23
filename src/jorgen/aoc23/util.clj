@@ -34,3 +34,12 @@
 (defn parse-int [s]
   (Integer/parseInt s))
 
+
+(defn parse-number-str [line]
+  (->> line
+       (re-seq #"\d+")))
+
+
+(defn parse-ints [line]
+  (->> (parse-number-str line)
+       (map parse-int)))
