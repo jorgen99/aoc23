@@ -43,3 +43,27 @@
 (defn parse-ints [line]
   (->> (parse-number-str line)
        (map parse-int)))
+
+
+(defn gcd
+  "Calculate the greatest common divisor with the Euclidean algoritm.
+   https://en.wikipedia.org/wiki/Greatest_common_divisor#Euclidean_algorithm
+  "
+  [a b]
+  (if (zero? b)
+    a
+    (recur b (mod a b))))
+
+
+(defn lcm
+  "Calculate the least common multiple using the greatest common divisor.
+   https://en.wikipedia.org/wiki/Least_common_multiple#Using_the_greatest_common_divisor
+  "
+  [a b]
+  (* (abs a) (/ (abs b) (gcd a b))))
+
+
+(defn lcm-multiple
+  "The least common multiple for more than two numbers."
+  [numbers]
+  (reduce lcm (first numbers) (rest numbers)))
