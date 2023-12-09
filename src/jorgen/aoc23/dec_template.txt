@@ -4,6 +4,9 @@
     [jorgen.aoc23.util :as util]))
 
 
+(let [lines (util/file->lines "dec___DAY____sample.txt")]
+  lines)
+
 
 (comment
   (time (part1 (util/file->lines "dec__DAY___sample.txt"))))

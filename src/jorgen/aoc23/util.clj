@@ -37,7 +37,7 @@
 
 (defn parse-number-str [line]
   (->> line
-       (re-seq #"\d+")))
+       (re-seq #"-?\d+")))
 
 
 (defn parse-ints [line]

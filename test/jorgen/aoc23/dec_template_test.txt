@@ -13,7 +13,7 @@
       (is (= 1 (part1 input)))))
 
   (testing "It should "
-    (let [sample (util/file->lines "dec__DAY___sample2.txt")
+    (let [sample (util/file->lines "dec__DAY___sample.txt")
           input (util/file->lines "dec__DAY___input.txt")]
       (is (= 1 (part2 sample)))
       (is (= 1 (part2 input))))))
