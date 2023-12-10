@@ -64,28 +64,12 @@
         (concat (repeat width :w)))))
 
 
-(defn take-step
-  "Given a direction and a position get the new position.
-   Ignoring 'going out of the grid' resulting in -1
-  Ex.
-       :n [1 2] => [1 1]
-       :e [3 8] => [4 8]
-       :n [1 0] => [1 -1]
-  "
-  [direction [x y]]
-  (case direction
-    :n [x (dec y)]
-    :e [(inc x) y]
-    :s [x (inc y)]
-    :w [(dec x) y]))
-
-
 (defn surrounding-points
   "All points surrounding a part, including invalid points"
   [part]
   (rest
     (reduce (fn [current-pos step]
-              (conj current-pos (take-step step (last current-pos))))
+              (conj current-pos (util/take-step step (last current-pos))))
             [[(:x part) (:y part)]]
             (path-around part))))
 
@@ -113,15 +97,11 @@
         (= c "."))))
 
 
-(defn value-in-grid [grid pos]
-  (get-in grid (reverse pos)))
-
-
 (defn part?
   "Walk around the part checking for a symbol"
   [part grid]
   (let [part? (->> (surrounding-in-grid part grid)
-                   (some #(is-symbol? (value-in-grid grid %))))]
+                   (some #(is-symbol? (util/value-in-grid grid %))))]
     (when part?
       (:number part))))
 

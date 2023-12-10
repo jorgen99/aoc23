@@ -4,7 +4,7 @@
     [jorgen.aoc23.util :as util]))
 
 
-(let [lines (util/file->lines "dec___DAY____sample.txt")]
+(let [lines (util/file->lines "dec__DAY___sample.txt")]
   lines)
 
 
