@@ -69,7 +69,7 @@
   [part]
   (rest
     (reduce (fn [current-pos step]
-              (conj current-pos (util/take-step step (last current-pos))))
+              (conj current-pos (util/take-step (last current-pos) step)))
             [[(:x part) (:y part)]]
             (path-around part))))
 

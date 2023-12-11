@@ -5,16 +5,16 @@
 
 (def card-order [\A \K \Q \J \T \9 \8 \7 \6 \5 \4 \3 \2])
 (def cards ["AKQJT98765432"])
-(defn card-comp [c1 c2]
-  (cond
-    (> (str/index-of cards c1) (str/index-of cards c2)) -1
-    (< (str/index-of cards c1) (str/index-of cards c2)) 1
-    :else 0))
+#_(defn card-comp [c1 c2]
+    (cond
+      (> (str/index-of cards c1) (str/index-of cards c2)) -1
+      (< (str/index-of cards c1) (str/index-of cards c2)) 1
+      :else 0))
 
-(card-comp \A \6)
+#_(card-comp \A \6)
 
-(defn card-sort [hands]
-  (sort-by :hand card-comp hands))
+#_(defn card-sort [hands]
+    (sort-by :hand card-comp hands))
 
 (def hs
   [{:hand "32T3K", :bet "765"}
@@ -27,12 +27,12 @@
      (map #(apply str (map (zipmap card-order (range)) (:hand %)))))
 (apply str (map (zipmap card-order (range)) (:hand (last hs))))
 
-(let [lines (util/file->lines "dec07_sample.txt")
-      hands (->> lines
-                 (map #(str/split % #"\s"))
-                 (mapv (fn [[hand bet]]
-                         (assoc {} :hand hand :bet bet))))]
-  (card-sort hands))
+#_(let [lines (util/file->lines "dec07_sample.txt")
+        hands (->> lines
+                   (map #(str/split % #"\s"))
+                   (mapv (fn [[hand bet]]
+                           (assoc {} :hand hand :bet bet))))]
+    (card-sort hands))
 
 
 

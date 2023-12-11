@@ -56,23 +56,23 @@
     (vec (concat before g after))))
 
 
-(let [card-pile (util/file->lines "dec04_sample.txt")
-      c (apply assoc {}
-               (interleave (range 1 (inc (count card-pile)))
-                           card-pile))
-      _ (clojure.pprint/pprint c)
-      current-card (first card-pile)]
-  (loop [total-cards card-pile
-         card-pile card-pile]
-    (if (empty? card-pile)
-      total-cards
-      (let [current-card (first card-pile)
-            card-no (->> (re-matches #"^Card (\d)+:.*$" current-card)
-                         second
-                         util/parse-int)
-            no-of-winning (my-winning-cards current-card)
-            ks (vec (range (inc card-no) (+ card-no no-of-winning 1)))
-            (vec (vals (select-keys c ks)))]))))
+#_(let [card-pile (util/file->lines "dec04_sample.txt")
+        c (apply assoc {}
+                 (interleave (range 1 (inc (count card-pile)))
+                             card-pile))
+        _ (clojure.pprint/pprint c)
+        current-card (first card-pile)]
+    (loop [total-cards card-pile
+           card-pile card-pile]
+      (if (empty? card-pile)
+        total-cards
+        (let [current-card (first card-pile)
+              card-no (->> (re-matches #"^Card (\d)+:.*$" current-card)
+                           second
+                           util/parse-int)
+              no-of-winning (my-winning-cards current-card)
+              ks (vec (range (inc card-no) (+ card-no no-of-winning 1)))
+              (vec (vals (select-keys c ks)))]))))
 
 
 
