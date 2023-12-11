@@ -5,16 +5,10 @@
     [jorgen.aoc23.dec10 :refer :all]))
 
 
-(deftest testing-
-  (testing "It should "
-    (let [sample (util/file->lines "dec10_sample1.txt")
-          input (util/file->lines "dec10_input.txt")]
-      (is (= 1 (part1 sample)))
-      (is (= 1 (part1 input)))))
+(deftest testing-the-pipe-maze
+  (testing "It should find the furthest point in the path"
+    (is (= 4 (part1 (util/file->lines "dec10_sample1.txt"))))
+    (is (= 8 (part1 (util/file->lines "dec10_sample2.txt"))))
+    (is (= 6867 (part1 (util/file->lines "dec10_input.txt"))))))
 
-  (testing "It should "
-    (let [sample (util/file->lines "dec10_sample1.txt")
-          input (util/file->lines "dec10_input.txt")]
-      (is (= 1 (part2 sample)))
-      (is (= 1 (part2 input))))))
 
