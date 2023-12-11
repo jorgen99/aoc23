@@ -89,10 +89,10 @@
   (let [seeds (map parse-long (re-seq #"\d+" (first lines)))]
     (location-for-seeds seeds lines)))
 
-(let [lines (util/file->lines "dec05_sample.txt")
-      seeds (map parse-long (re-seq #"\d+" (first lines)))
-      _ (prn seeds)])
-  ;(location-for-seeds seeds lines))
+;(let [lines (util/file->lines "dec05_sample.txt")
+;      seeds (map parse-long (re-seq #"\d+" (first lines)))
+;      _ (prn seeds)])
+;  ;(location-for-seeds seeds lines))
 
 
 

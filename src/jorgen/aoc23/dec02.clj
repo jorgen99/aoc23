@@ -27,13 +27,11 @@
      =>   [1 [{:blue 3, :red 4} {:red 1, :green 2, :blue 6} {:green 2}]]
   "
   [line]
-  (prn line)
   (let [[game cubes] (str/split line #":")
         game-no (->> (re-matches #"Game (\d+)" game)
                      second
                      util/parse-int)
         grabs (str/split (str/trim cubes) #"; ")
-        _ (prn grabs)
         parsed-grabs (reduce (fn [acc grab]
                                (conj acc (parse-grab grab)))
                              []
