@@ -93,32 +93,30 @@
     :w [(dec x) y]))
 
 
-(defn points-orthogonally-adjacent [point]
-  "Points n, e, w and s of a point, including invalid points"
-  [point]
-  (rest
-    (reduce (fn [current-pos step]
-              (conj current-pos (take-step step point)))
-            [point]
-            [:n :e :s :w])))
+(defn indicies-of-char
+  "Find the indicies of the supplied char/string
+  Ex.
+      [\\*, '.234.*.#.321*.']  => (5, 12)
+      ['#', ['.' '.' '#' '.' '#' '.'] => (2, 4)
+  "
+  [char col]
+  (reduce (fn [acc [i s]]
+            (if (= s char)
+              (conj acc i)
+              acc))
+          []
+          (map-indexed vector col)))
 
 
-(defn remove-invalid-points [grid points]
-  (let [height (count (first grid))
-        width (count grid)]
-    (->> points
-         (remove #(neg? (first %)))
-         (remove #(neg? (last %)))
-         (remove #(<= width (first %)))
-         (remove #(<= height (last %))))))
+(defn positions-of-char-in-grid [char grid]
+  (->> grid
+       (map-indexed vector)
+       (mapcat (fn [[i line]]
+                 (map (fn [j] [i j]) (indicies-of-char char line))))
+       (remove empty?)
+       (map reverse)))
 
 
-(defn surrounding-in-grid
-  "Valid points in the grid surrounding the part"
-  [part grid]
-  (let [height (count (first grid))
-        width (count grid)]
-    (-> (points-orthogonally-adjacent part)
-        (remove-invalid-points width height))))
-
+(defn transpose [grid]
+  (apply mapv vector grid))
 
