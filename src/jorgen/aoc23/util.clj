@@ -3,9 +3,10 @@
 
 
 (defn file->lines [filename]
-  (->
-    (slurp (str "resources/" filename))
-    str/split-lines))
+  (->> filename
+       (str "resources/")
+       slurp
+       str/split-lines))
 
 
 (defn char->int [^Character c]
