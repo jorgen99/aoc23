@@ -121,3 +121,12 @@
 (defn transpose [grid]
   (apply mapv vector grid))
 
+
+(defn parse-blocks [lines]
+  (loop [blocks []
+         remaining lines]
+    (if (empty? remaining)
+      blocks
+      (recur (conj blocks (take-while not-empty remaining))
+             (rest (drop-while not-empty remaining))))))
+

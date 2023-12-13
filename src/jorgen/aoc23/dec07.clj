@@ -13,6 +13,7 @@
     (> (str/index-of cards c1) (str/index-of cards c2)) 1
     :else 0))
 
+
 (str "(?:" (str/join "|" (map #(str %1 "{" 5 "}") card-order)) ")")
 
 (def hand-strength
