@@ -8,10 +8,10 @@
 (deftest testing-hashing
   (testing "It should calculate the sum of hashed parts"
     (is (= 1320 (part1 (util/file->lines "dec15_sample.txt"))))
-    (is (= 503154 (part1 (util/file->lines "dec15_input.txt"))))))
+    (is (= 503154 (part1 (util/file->lines "dec15_input.txt")))))
 
 
-  ;(testing "It should "
-  ;  (is (= 1 (part (util/file->lines "dec15_sample.txt"))))
-  ;  (is (= 1 (part2 (util/file->lines "dec15_input.txt"))))))
+  (testing "It should calculate lens powers"
+    (is (= 145 (part2 (util/file->lines "dec15_sample.txt"))))
+    (is (= 251353 (part2 (util/file->lines "dec15_input.txt"))))))
 
