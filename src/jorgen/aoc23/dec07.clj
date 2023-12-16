@@ -49,7 +49,7 @@
   (->> lines
        (map #(str/split % #"\s"))
        (mapv (fn [[hand bet]]
-               (assoc {} :hand hand :bet bet)))))
+               {:hand hand :bet bet}))))
 
 
 (defn part1 [lines]

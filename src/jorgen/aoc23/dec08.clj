@@ -7,8 +7,7 @@
   (->> nodes
        (map #(re-matches #"(\w+)\s+=\s+\((\w+),\s+(\w+)\)" %))
        (reduce (fn [acc [_ node left right]]
-                 (assoc acc (keyword node) (assoc {} :L (keyword left)
-                                                     :R (keyword right))))
+                 (assoc acc (keyword node) { :L (keyword left) :R (keyword right)}))
                {})))
 
 

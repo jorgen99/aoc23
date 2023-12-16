@@ -29,7 +29,7 @@
                                 (if (not (seq? x))
                                   (parse-long x)
                                   x)))
-       (map #(apply assoc {} (interleave [:to :from :length] %)))))
+       (map #(zipmap [:to :from :length] %))))
 
 
 (defn in-range?
@@ -106,6 +106,6 @@
 (comment
   (part1 (util/file->lines "dec05_sample.txt"))
   (part1 (util/file->lines "dec05_input.txt"))
-  (part2 (util/file->lines "dec05_sample.txt"))
-  (part2 (util/file->lines "dec05_input.txt")))
+  (part2 (util/file->lines "dec05_sample.txt")))
+  ;(part2 (util/file->lines "dec05_input.txt")))
 

@@ -30,11 +30,10 @@
 
 (defn parse-lens-op [step]
   (let [parts (re-matches #"(\w+)([-=])(\d?)" step)]
-    (assoc {}
-      :label (second parts)
-      :focal-lenth (get parts 3)
-      :lens-hash (hash-step (second parts))
-      :op (get parts 2))))
+    {:label       (second parts)
+     :focal-lenth (get parts 3)
+     :lens-hash   (hash-step (second parts))
+     :op          (get parts 2)}))
 
 
 (defn upsert-lens-in-box
@@ -48,7 +47,7 @@
   (let [[head tail] (split-with #(not= label (:label %)) box)
         updated (if (first tail)
                   (assoc (first tail) :focal-lenth focal-lenth)
-                  (assoc {} :label label :focal-lenth focal-lenth))]
+                  {:label label :focal-lenth focal-lenth})]
     (concat head (cons updated (rest tail)))))
 
 

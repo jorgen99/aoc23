@@ -121,33 +121,33 @@
 
 
 
-(let [grids (->> (util/file->lines "dec13_input.txt")
-                 (util/parse-blocks)
-                 (map util/parse-grid-of-chars)
-                 vec)
-      _ (prn "(count grids)" (count grids))]
-      ;_ (clojure.pprint/pprint grids)]
-  ;_ (clojure.pprint/pprint (util/transpose (second grids)))
-  ;_ (prn "================")
-  ;second-block (second (->> (util/file->lines "dec13_sample.txt")
-  ;                          (util/parse-blocks)))
-  ;_ (clojure.pprint/pprint second-block)
-  ;_ (prn "UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUu")]
-  (count (->> grids
-          ;(map util/transpose)
-          (map #(find-smudge-with-idxs (range 1 (count %)) %))
-          (remove nil?)
-          (map (fn [[l r]] (inc l))))))
-            ;(reduce +)
-            ;(* 100))))
-       #_(->> grids
-              (map util/transpose)
-              (map #(find-smudge-with-idxs (range 1 (count %)) %))
-              (remove nil?)
-              (map (fn [[l r]] (inc l)))))
-            ;(reduce +)
-            ;(* 100))))
-
+;(let [grids (->> (util/file->lines "dec13_input.txt")
+;                 (util/parse-blocks)
+;                 (map util/parse-grid-of-chars)
+;                 vec)
+;      _ (prn "(count grids)" (count grids))]
+;      ;_ (clojure.pprint/pprint grids)]
+;  ;_ (clojure.pprint/pprint (util/transpose (second grids)))
+;  ;_ (prn "================")
+;  ;second-block (second (->> (util/file->lines "dec13_sample.txt")
+;  ;                          (util/parse-blocks)))
+;  ;_ (clojure.pprint/pprint second-block)
+;  ;_ (prn "UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUu")]
+;  (count (->> grids
+;          ;(map util/transpose)
+;          (map #(find-smudge-with-idxs (range 1 (count %)) %))
+;          (remove nil?)
+;          (map (fn [[l r]] (inc l))))))
+;            ;(reduce +)
+;            ;(* 100))))
+;       #_(->> grids
+;              (map util/transpose)
+;              (map #(find-smudge-with-idxs (range 1 (count %)) %))
+;              (remove nil?)
+;              (map (fn [[l r]] (inc l)))))
+;            ;(reduce +)
+;            ;(* 100))))
+;
 
 (comment
   (time (part1 (util/file->lines "dec13_sample.txt")))
