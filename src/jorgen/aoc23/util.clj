@@ -78,6 +78,10 @@
   (get-in grid (reverse pos)))
 
 
+(defn set-value-in-grid [grid pos value]
+  (assoc-in grid (reverse pos) value))
+
+
 (defn take-step
   "Given a direction and a position get the new position.
    Ignoring 'going out of the grid' resulting in -1
