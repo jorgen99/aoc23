@@ -4,8 +4,26 @@
     [jorgen.aoc23.util :as util]))
 
 
-(let [lines (util/file->lines "dec19_sample.txt")]
-  lines)
+
+
+
+
+;(defn parse-parts [part-strs]
+;  (reduce (fn [acc part]
+;            (str/replace part #""))))
+
+(defn parse-workflow [workflow]
+  (prn workflow)
+  (let [name (first (str/split workflow #"\{"))
+        between (second (re-matches #".*?\{(.*?)\}" workflow))
+        rule-parts (str/split between #",")]
+
+    rule))
+
+(let [lines (util/file->lines "dec19_sample.txt")
+      blocks (util/parse-blocks lines)]
+  (->> (first blocks)
+       (map parse-workflow)))
 
 
 (comment
