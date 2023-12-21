@@ -5,12 +5,12 @@
     [jorgen.aoc23.dec__DAY__ :refer :all]))
 
 
-(deftest testing-
-  (testing "It should "
-    (is (= 1 (part1 (util/file->lines "dec__DAY___sample.txt"))))
-    (is (= 1 (part1 (util/file->lines "dec__DAY___input.txt"))))))
-
-
-  ;(testing "It should "
-  ;  (is (= 1 (part (util/file->lines "dec__DAY___sample.txt"))))
-  ;  (is (= 1 (part2 (util/file->lines "dec__DAY___input.txt"))))))
+;(deftest testing-
+;  (testing "It should "
+;    (is (= 1 (part1 (util/file->lines "dec__DAY___sample.txt"))))
+;    (is (= 1 (part1 (util/file->lines "dec__DAY___input.txt"))))))
+;
+;
+;  ;(testing "It should "
+;  ;  (is (= 1 (part (util/file->lines "dec__DAY___sample.txt"))))
+;  ;  (is (= 1 (part2 (util/file->lines "dec__DAY___input.txt"))))))
