@@ -4,9 +4,23 @@
     [jorgen.aoc23.util :as util]))
 
 
+(defn find-first [pred coll]
+  (->> (map-indexed vector coll)
+       (drop-while #(not (pred (second %))))
+       first
+
+
 (let [lines (util/file->lines "dec14_sample.txt")
       cols (util/transpose lines)]
-  cols)
+  (->> (first cols)
+         (partition 2 1)
+         (find-first (fn [t] (if (= t [])))))))
+
+(defn find-first [pred coll]
+  (->> (map-indexed vector coll)
+       (drop-while #(not (pred (second %))))
+       first
+
 
 
 (comment

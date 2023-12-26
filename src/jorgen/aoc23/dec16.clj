@@ -60,6 +60,4 @@
   (time (part1 (util/file->lines "dec16_sample.txt"))))
 ;(time (part1 (util/file->lines "dec16_input.txt")))
 ;(time (part2 (util/file->lines "dec16_sample.txt")))
-;(time (part2 (util/file->lines "dec16_input.txt"))))
-
-
+;(time (part2 (util/file->lines "dec16_input.txt")))v)
